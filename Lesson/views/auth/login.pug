@@ -1,0 +1,45 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css',
+   integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
+  link(rel='stylesheet', href='/StyleSheet/style.css')
+  title Login
+.Container
+  .Content-Login
+    .Login-Right
+      h3
+        | Welcome to 
+        br
+        span Kim Tien
+    form(action="/auth/login", method="POST", class="Login-Left")
+      h1 Welcome back,
+
+      if errors
+        each error in errors
+          .Error
+            label=error
+
+
+      .form-Group
+        .form-Login-Email
+          input#email(type='text', name='email', placeholder='Email', value=values ? values.email : "")
+          label.lb-Email(for='email') Email
+          if errorEmail
+            .Error
+              label= errorEmail
+        .form-Login-Password
+          input#password(type='password', name='password', placeholder='Password')
+          label.lb-Password(for='password') Password
+          if errorPassword
+            .Error
+              label= errorPassword
+        .forgot-Password
+          p Forgot Password?
+        .sign-In
+          button(type="submit",class="btn btn-primary") Sign In
+        .Create-One
+          p
+            | Don&apos;t have an account? 
+            span Create One

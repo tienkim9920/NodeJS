@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": "Wfb44TWo5",
+      "name": "Nguyễn Kim Tiền",
+      "phone": "0763557366",
+      "email": "tienkim9920@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "XSkIBBZep",
+      "name": "Phạm Thu Hương",
+      "phone": "0975646422",
+      "email": "thuhuongpham@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "zDBExZxnY",
+      "name": "Phạm Xuân Hoài",
+      "phone": "056845684",
+      "email": "xuanhoai9a2@gmail.com",
+      "password": "123465"
+    },
+    {
+      "id": "W_Sx6vPlG",
+      "name": "Nguyễn Quốc Toàn",
+      "phone": "086765448",
+      "email": "hahadaubo@gmail.com",
+      "password": "qa"
+    }
+  ]
+}
