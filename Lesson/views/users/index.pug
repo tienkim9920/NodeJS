@@ -16,6 +16,7 @@ head
 
     table(class="table")
         tr
+            th Avatar
             th Name
             th Phone
             th Email
@@ -23,10 +24,15 @@ head
 
         each user in users
             tr
+                td
+                    img(src=user.avatar, style="width: 30px")
                 td=user.name
                 td=user.phone
                 td=user.email
-                td
-                    a(href='/users/' + user.id, class="btn btn-light") View
+                td(class="d-flex")
+                    a(href='/users/' + user.id, class="btn btn-primary") View
+                    span &nbsp;
+                    form(action="/users/" + user.id, method="POST")
+                        button(class="btn btn-danger") Delete
 
     a(href="users/create", class="btn btn-primary") Create

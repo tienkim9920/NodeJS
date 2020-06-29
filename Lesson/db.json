@@ -1,32 +1,114 @@
 {
   "users": [
     {
-      "id": "Wfb44TWo5",
-      "name": "Nguyễn Kim Tiền",
-      "phone": "0763557366",
+      "id": "vdFllqfux",
+      "name": "Trà Sữa",
+      "phone": "123",
       "email": "tienkim9920@gmail.com",
-      "password": "123456"
+      "password": "202cb962ac59075b964b07152d234b70",
+      "avatar": "uploads/351aacf4c4f366d7d0c9875feaf01aeb"
     },
     {
-      "id": "XSkIBBZep",
-      "name": "Phạm Thu Hương",
-      "phone": "0975646422",
-      "email": "thuhuongpham@gmail.com",
-      "password": "123456"
+      "id": "5tmg7YJOA",
+      "name": "Trà Matcha",
+      "phone": "123",
+      "email": "123",
+      "password": "202cb962ac59075b964b07152d234b70",
+      "avatar": "uploads/d16f28710675600c60de9a928fb241b9"
     },
     {
-      "id": "zDBExZxnY",
-      "name": "Phạm Xuân Hoài",
-      "phone": "056845684",
-      "email": "xuanhoai9a2@gmail.com",
-      "password": "123465"
+      "id": "VwOVBc9V3",
+      "name": "Trà Đào",
+      "phone": "123",
+      "email": "123",
+      "password": "202cb962ac59075b964b07152d234b70",
+      "avatar": "uploads/f5f3dfefce6bcbcb58e3d6a5a544a123"
     },
     {
-      "id": "W_Sx6vPlG",
-      "name": "Nguyễn Quốc Toàn",
-      "phone": "086765448",
-      "email": "hahadaubo@gmail.com",
-      "password": "qa"
+      "id": "L0Im8RLtd",
+      "name": "Dâu Ép",
+      "phone": "123",
+      "email": "123",
+      "password": "202cb962ac59075b964b07152d234b70",
+      "avatar": "uploads/5f85d05e829dfcd1dd14d3e2dad95da1"
+    },
+    {
+      "id": "c5zfLuHnO",
+      "name": "123",
+      "phone": "123",
+      "email": "123",
+      "password": "202cb962ac59075b964b07152d234b70",
+      "avatar": "uploads/764ace4ce20c22fe8f3c0d55802b25e2"
+    },
+    {
+      "id": "UBK43IQ_3",
+      "name": "123",
+      "phone": "123",
+      "email": "123",
+      "password": "202cb962ac59075b964b07152d234b70",
+      "avatar": "uploads/624cf8aa588c217512f6d720853a7880"
+    },
+    {
+      "id": "6mt4VB-Tr",
+      "name": "123",
+      "phone": "123",
+      "email": "123",
+      "password": "202cb962ac59075b964b07152d234b70",
+      "avatar": "uploads/66d3f51c3fd13bf3f2f71fc4e2cb4c24"
+    },
+    {
+      "id": "tydEpq5TE",
+      "name": "123",
+      "phone": "123",
+      "email": "123",
+      "password": "202cb962ac59075b964b07152d234b70",
+      "avatar": "uploads/758108f275b2f6b0ae007799c0aaa293"
+    },
+    {
+      "id": "TZb_8VvQK",
+      "name": "123",
+      "phone": "123",
+      "email": "123",
+      "password": "202cb962ac59075b964b07152d234b70",
+      "avatar": "uploads/0ea28b6e434d088590ec77e83660d90f"
+    },
+    {
+      "id": "vHeTcMfti",
+      "name": "123",
+      "phone": "123",
+      "email": "123",
+      "password": "202cb962ac59075b964b07152d234b70",
+      "avatar": "uploads/fa35eaef9f2694149e9fdc68da64bcff"
+    },
+    {
+      "id": "0DiexVE34",
+      "name": "123",
+      "phone": "123",
+      "email": "123",
+      "password": "202cb962ac59075b964b07152d234b70",
+      "avatar": "uploads/2074b9ead5f40ecc81a30011c7bd3c9a"
+    }
+  ],
+  "sessionId": [
+    {
+      "id": "dMy8gzsg-"
+    },
+    {
+      "id": "roXByIm4z",
+      "cart": {
+        "vdFllqfux": 20,
+        "5tmg7YJOA": 4,
+        "VwOVBc9V3": 1
+      }
+    },
+    {
+      "id": "Ues_pkgad",
+      "cart": {
+        "VwOVBc9V3": 1,
+        "5tmg7YJOA": 1,
+        "vdFllqfux": 1,
+        "L0Im8RLtd": 1
+      }
     }
   ]
 }
