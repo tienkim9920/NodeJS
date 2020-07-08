@@ -24,6 +24,8 @@ module.exports.index = (req, res) => {
         arrCart.push(x)
     }
 
+    console.log(arrCart);
+
     var sum = 0;
     for (var i = 0; i < arrCart.length; i++){
         var count = db.get('sessionId').find(({id}) => id === sessionId).get('cart.' + arrCart[i]).value();

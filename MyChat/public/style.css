@@ -1,0 +1,75 @@
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper{
+    padding: 2rem 0;
+    margin-top: 1rem;
+    box-shadow: 3px 3px 3px rgb(209, 209, 209), -3px -3px 3px rgb(209, 209, 209);
+    width: 80%;
+}
+
+h1{
+    text-align: center; 
+    padding-bottom: 1rem; 
+    letter-spacing: .2rem;
+    font-weight: bold;
+    color: green;
+    font-size: 2rem;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+}
+
+.form-group{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.showContent{
+    height: 25rem;
+    width: 65%;
+    border: 1px solid rgb(182, 182, 182);
+    background-color: #fdfdfd;
+    overflow: auto;
+}
+
+#inPutChat{
+    width: 55%;
+    margin-right: 1rem;
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: .3rem;
+    outline: transparent;
+}
+
+#submitChat{
+    background-color: rgb(102, 245, 145);
+    text-decoration: none;
+    padding: .5rem 1.5rem;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: .3rem;
+    cursor: pointer;
+}
+
+#submitChat:hover{
+    background-color: rgb(70, 180, 103);
+    transition: all .3s;
+}
+
+.ShowMessenger{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.editUser{
+    margin: .5rem 1rem;
+    padding: .5rem 1rem;
+    background-color: rgb(70, 180, 103);
+    border-radius: 2rem;
+    color: #ffffff;
+}

@@ -1,22 +1,6 @@
 {
   "users": [
     {
-      "id": "vdFllqfux",
-      "name": "Trà Sữa",
-      "phone": "123",
-      "email": "tienkim9920@gmail.com",
-      "password": "202cb962ac59075b964b07152d234b70",
-      "avatar": "uploads/351aacf4c4f366d7d0c9875feaf01aeb"
-    },
-    {
-      "id": "5tmg7YJOA",
-      "name": "Trà Matcha",
-      "phone": "123",
-      "email": "123",
-      "password": "202cb962ac59075b964b07152d234b70",
-      "avatar": "uploads/d16f28710675600c60de9a928fb241b9"
-    },
-    {
       "id": "VwOVBc9V3",
       "name": "Trà Đào",
       "phone": "123",
@@ -47,14 +31,6 @@
       "email": "123",
       "password": "202cb962ac59075b964b07152d234b70",
       "avatar": "uploads/624cf8aa588c217512f6d720853a7880"
-    },
-    {
-      "id": "6mt4VB-Tr",
-      "name": "123",
-      "phone": "123",
-      "email": "123",
-      "password": "202cb962ac59075b964b07152d234b70",
-      "avatar": "uploads/66d3f51c3fd13bf3f2f71fc4e2cb4c24"
     },
     {
       "id": "tydEpq5TE",
@@ -109,6 +85,44 @@
         "vdFllqfux": 1,
         "L0Im8RLtd": 1
       }
+    },
+    {
+      "id": "PKmb_UZKA",
+      "cart": {
+        "VwOVBc9V3": 1,
+        "L0Im8RLtd": 2
+      }
+    },
+    {
+      "id": "zSLTgLuiX",
+      "cart": {
+        "L0Im8RLtd": 1
+      }
+    },
+    {
+      "id": "i5WxUDPdj",
+      "cart": {
+        "VwOVBc9V3": 1
+      }
+    },
+    {
+      "id": "rbZtqnh-Q"
+    },
+    {
+      "id": "YrHsSjrdN"
+    },
+    {
+      "id": "EPiHT3Sdo",
+      "cart": {
+        "VwOVBc9V3": 2,
+        "L0Im8RLtd": 1
+      }
+    },
+    {
+      "id": "qdURPTKA4"
+    },
+    {
+      "id": "RHTiy1MUE"
     }
   ]
 }

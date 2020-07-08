@@ -1,26 +1,40 @@
 const shortid = require('shortid');
 var md5 = require('md5');
 
-var db = require('../db');
+var User = require('../models/users.model')
 
 module.exports.index = (req, res) => {
-    res.render('users/index', {
-        users: db.get('users').value()
-    });
+    User.find().then((user) => {
+       res.render('users/index', {
+           users: user
+       })
+    })
 }
 
 module.exports.delete = (req, res) => {
     var idCheck = req.params.id;
 
-    console.log(idCheck);
-
-    var user = db.get('users').find(({id}) => id === idCheck).value();
-
-    console.log("-----------------------------------------------")
-
-    db.get('users').remove(({id}) => id === user.id).write();
+    User.findOneAndRemove({_id: idCheck}, (err) => {
+        if (err){
+            console.log(err);
+            return
+        }
+        return res.status(200).send()
+    });
 
     res.redirect('/users');
+
+    // var idCheck = req.params.id;
+
+    // console.log(idCheck);
+
+    // var user = db.get('users').find(({id}) => id === idCheck).value();
+
+    // console.log("-----------------------------------------------")
+
+    // db.get('users').remove(({id}) => id === user.id).write();
+
+    // res.redirect('/users');
 
 
     // var idCheck = req.params.id;
@@ -53,10 +67,11 @@ module.exports.delete = (req, res) => {
     // });
 }
 
-module.exports.search = (req, res) => {
+module.exports.search = async (req, res) => {
+
     var q = req.query.q.toUpperCase();
 
-    var arrLowdb = db.get('users').value();
+    var arrLowdb = await User.find();
 
     var matchUsers = [];
 
@@ -66,30 +81,39 @@ module.exports.search = (req, res) => {
         }
     }
 
+    console.log(matchUsers)
+
+    
     res.render('users/index', {
         users: matchUsers
-    });
+    })
+
 }
 
-module.exports.create = (req, res) => {
+module.exports.create = async (req, res) => {
     res.render('users/create');
 }
 
 module.exports.views = (req, res) => {
-    var idViews = req.params.id;
+    // var idViews = req.params.id;
 
-    var user = db.get('users').find(({id}) => id === idViews).value();
+    // var user = await User.find({_id: idViews})
 
-    res.render('users/views', {
-        users: user
-    });
+    // console.log(user)
+
+    // res.render('users/views', {
+    //     users: user
+    // });
+
+    User.findById(req.params.id, (err, user) => {
+        res.render('users/views', {
+            users: user
+        });
+    })
 }
 
 module.exports.createUser = (req, res) => {
     
-    req.body.id = shortid.generate();
-    var reqId = req.body.id;
-
     var reqName = req.body.name;
     if (!reqName){
         res.render('users/create', {
@@ -129,7 +153,16 @@ module.exports.createUser = (req, res) => {
 
     var reqAvatar = req.file.path.split('\\').splice(1).join('/');
 
-    db.get('users').push({ id: reqId, name: reqName, phone: reqPhone, email: reqEmail, password: safePassword, avatar: reqAvatar}).write();
+    var createObject = {
+        name: reqName,
+        phone: reqPhone,
+        email: reqEmail,
+        password: reqPassword,
+        avatar: reqAvatar
+    }
+
+    User.insertMany(createObject)
+
     res.redirect('/users');
 }
 
