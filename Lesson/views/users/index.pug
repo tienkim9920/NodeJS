@@ -6,13 +6,13 @@ head
    integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
   title User
 
-.container  
-    h1(style="padding-top: 3rem") This is User
+.container(style="height: 50rem;")
+    h1(style="padding-top: 3rem") Quản Lý Sản Phẩm
 
     form(action="/users/search", method="GET", class="d-flex" ,style="padding-bottom: 3rem; justify-content: flex-end;", enctype="multipart/form-data")
         label(for="search", style="padding: .5rem 1rem 0 0") Tìm Kiếm: 
         input(type="text", name="q", class="form-control w-25")
-        button(class="btn btn-primary ml-2") Search
+        button(class="btn btn-primary ml-2") Tìm Kiếm
 
     table(class="table")
         tr
@@ -25,14 +25,16 @@ head
         each user in users
             tr
                 td
-                    img(src=user.avatar, style="width: 30px")
+                    img(src="/" + user.avatar, style="width: 30px")
                 td=user.name
-                td=user.phone
+                td=user.price
                 td=user.email
                 td(class="d-flex")
-                    a(href='/users/' + user.id, class="btn btn-primary") View
+                    a(href='/users/' + user._id, class="btn btn-primary") View
                     span &nbsp;
-                    form(action="/users/" + user.id, method="POST")
+                    form(action="/users/" + user._id, method="POST")
                         button(class="btn btn-danger") Delete
+                    span &nbsp;
+                    a(href='/users/edit/' + user._id, class="btn btn-success") Update
 
-    a(href="users/create", class="btn btn-primary") Create
+    a(href="users/create", class="btn btn-primary") Thêm Mới

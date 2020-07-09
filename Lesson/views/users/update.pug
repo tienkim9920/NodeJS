@@ -1,0 +1,31 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css',
+   integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
+  title Update
+
+.container
+    .wapper
+        h1(class="text-center", style="padding-top: 3rem") Update User
+
+        form(action='/users/edit/' + users._id, method="POST", style="padding-top: 2rem")
+            .form-group(class="d-flex", style="justify-content: center")
+                label(for="name", style="padding: .4rem 2rem 0 0rem; margin-right: 1rem") Name: 
+                input(name="name" type="text", class="form-control", style="width: 45%", value=users.name)
+                
+            .form-group(class="d-flex", style="justify-content: center; padding-top: 1.5rem")
+                label(for="price", style="padding: .4rem 2rem 0 0rem; margin-right: 1rem") Price: 
+                input(name="price" type="text", class="form-control", style="width: 45%", value=users.price)
+
+            .form-group(class="d-flex", style="justify-content: center; padding-top: 1.5rem")
+                label(for="email", style="padding: .4rem 2.3rem 0 0rem; margin-right: 1rem") Email: 
+                input(name="email" type="text", class="form-control", style="width: 45%", value=users.email)
+
+            .form-group(class="d-flex", style="justify-content: center; padding-top: 1.5rem")
+                label(for="password", style="padding: .4rem .7rem 0 0rem; margin-right: 1rem") Password: 
+                input(name="password" type="password", class="form-control", style="width: 45%", value=users.password)
+
+            .form-group(class="d-flex", style="justify-content: center; padding-top: 2rem")
+                button(type="submit", class="btn btn-primary d-flex") Update

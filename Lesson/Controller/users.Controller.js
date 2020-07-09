@@ -1,6 +1,7 @@
 const shortid = require('shortid');
 var md5 = require('md5');
 
+
 var User = require('../models/users.model')
 
 module.exports.index = (req, res) => {
@@ -23,48 +24,6 @@ module.exports.delete = (req, res) => {
     });
 
     res.redirect('/users');
-
-    // var idCheck = req.params.id;
-
-    // console.log(idCheck);
-
-    // var user = db.get('users').find(({id}) => id === idCheck).value();
-
-    // console.log("-----------------------------------------------")
-
-    // db.get('users').remove(({id}) => id === user.id).write();
-
-    // res.redirect('/users');
-
-
-    // var idCheck = req.params.id;
-
-    // console.log(idCheck);
-
-    // var user = db.get('users').find(({id}) => id === idCheck).value();
-
-    // console.log("-----------------------------------------------")
-
-    // var length = db.get('users').value().length;
-
-    // var temp;
-
-    // for (var i = 0; i < db.get('users').value().length; i++){
-    //     if (db.get('users').value()[i].id === user.id) {
-    //         temp = db.get('users').value()[i];
-    //         db.get('users').value()[i] = db.get('users').value()[length - 1];
-    //         db.get('users').value()[length - 1] = temp;
-    //         db.get('users').pop().write();
-    //     }
-    //     console.log('-----Test------');
-    // }
-
-    // console.log(db.get('users').value().length);
-    // console.log(db.get('users').value());
-
-    // res.render('users/index', {
-    //     users: db.get('users').value()
-    // });
 }
 
 module.exports.search = async (req, res) => {
@@ -94,7 +53,7 @@ module.exports.create = async (req, res) => {
     res.render('users/create');
 }
 
-module.exports.views = (req, res) => {
+module.exports.views = async (req, res) => {
     // var idViews = req.params.id;
 
     // var user = await User.find({_id: idViews})
@@ -104,17 +63,24 @@ module.exports.views = (req, res) => {
     // res.render('users/views', {
     //     users: user
     // });
+    // var idViews = req.params.id;
+
+    // var user = await User.find({_id: idViews})
+
+    // console.log(user.name)
 
     User.findById(req.params.id, (err, user) => {
         res.render('users/views', {
             users: user
         });
     })
+
 }
 
 module.exports.createUser = (req, res) => {
     
     var reqName = req.body.name;
+    console.log(reqName)
     if (!reqName){
         res.render('users/create', {
             error: ["Name can't empty!"],
@@ -157,12 +123,45 @@ module.exports.createUser = (req, res) => {
         name: reqName,
         phone: reqPhone,
         email: reqEmail,
-        password: reqPassword,
+        password: safePassword,
         avatar: reqAvatar
     }
 
     User.insertMany(createObject)
 
     res.redirect('/users');
+}
+
+module.exports.update = (req, res) => {
+    User.findById(req.params.id, (err, user) => {
+        res.render('users/update', {
+            users: user
+        })
+    })
+}
+
+module.exports.updateUser = (req, res) => {
+
+    var query = {_id: req.params.id}
+
+    console.log(query)
+
+    let users = {}
+
+    users.name = req.body.name
+    users.price = req.body.price
+    users.email = req.body.email
+    users.password = md5(req.body.password)
+
+    console.log(users)
+
+    User.update(query, users, (err) => {
+        if (err){
+            console.log(err)
+        }else{
+            res.redirect('/users')
+        }
+    })
+
 }
 

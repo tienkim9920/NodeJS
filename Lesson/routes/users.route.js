@@ -20,4 +20,8 @@ router.post('/create', upload.single('avatar'), usersController.createUser);
 
 router.post('/:id', usersController.delete)
 
+router.get('/edit/:id', usersController.update);
+
+router.post('/edit/:id', usersController.updateUser)
+
 module.exports = router
