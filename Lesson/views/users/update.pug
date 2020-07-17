@@ -12,12 +12,12 @@ head
 
         form(action='/users/edit/' + users._id, method="POST", style="padding-top: 2rem")
             .form-group(class="d-flex", style="justify-content: center")
-                label(for="name", style="padding: .4rem 2rem 0 0rem; margin-right: 1rem") Name: 
-                input(name="name" type="text", class="form-control", style="width: 45%", value=users.name)
+                label(for="name", style="padding: .4rem 2rem 0 0rem; margin-right: 1rem") Full Name: 
+                input(name="name" type="text", class="form-control", style="width: 45%", value=users.fullname)
                 
             .form-group(class="d-flex", style="justify-content: center; padding-top: 1.5rem")
-                label(for="price", style="padding: .4rem 2rem 0 0rem; margin-right: 1rem") Price: 
-                input(name="price" type="text", class="form-control", style="width: 45%", value=users.price)
+                label(for="phone", style="padding: .4rem 2rem 0 0rem; margin-right: 1rem") Phone: 
+                input(name="phone" type="text", class="form-control", style="width: 45%", value=users.phone)
 
             .form-group(class="d-flex", style="justify-content: center; padding-top: 1.5rem")
                 label(for="email", style="padding: .4rem 2.3rem 0 0rem; margin-right: 1rem") Email: 

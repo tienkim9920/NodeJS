@@ -1,16 +1,24 @@
 const shortid = require('shortid');
 var md5 = require('md5');
 
+var User = require('../models/users.model');
 
-var User = require('../models/users.model')
+module.exports.index = async (req, res) => {
 
-module.exports.index = (req, res) => {
-    User.find().then((user) => {
-       res.render('users/index', {
-           users: user
-       })
-    })
+    var user = await User.findOne(({_id: req.signedCookies.userID}))
+
+    if (user.status === true){
+        console.log("Chao Admin!")
+        User.find().then((user) => {
+            res.render('users/index', {
+                users: user
+            })
+         })
+    }else{
+        res.redirect('/')
+    }
 }
+
 
 module.exports.delete = (req, res) => {
     var idCheck = req.params.id;
@@ -22,7 +30,6 @@ module.exports.delete = (req, res) => {
         }
         return res.status(200).send()
     });
-
     res.redirect('/users');
 }
 
@@ -35,7 +42,7 @@ module.exports.search = async (req, res) => {
     var matchUsers = [];
 
     for (var i = 0; i < arrLowdb.length; i++){
-        if (arrLowdb[i].name.toUpperCase().indexOf(q) > -1){
+        if (arrLowdb[i].fullname.toUpperCase().indexOf(q) > -1){
             matchUsers.push(arrLowdb[i]);
         }
     }
@@ -117,14 +124,16 @@ module.exports.createUser = (req, res) => {
         return;
     }
 
-    var reqAvatar = req.file.path.split('\\').splice(1).join('/');
+    // var reqAvatar = req.file.path.split('\\').splice(1).join('/');
 
     var createObject = {
-        name: reqName,
+        fullname: reqName,
         phone: reqPhone,
         email: reqEmail,
         password: safePassword,
-        avatar: reqAvatar
+        status: req.body.status,
+        cart: []
+        // avatar: reqAvatar
     }
 
     User.insertMany(createObject)
@@ -148,8 +157,8 @@ module.exports.updateUser = (req, res) => {
 
     let users = {}
 
-    users.name = req.body.name
-    users.price = req.body.price
+    users.fullname = req.body.name
+    users.phone = req.body.phone
     users.email = req.body.email
     users.password = md5(req.body.password)
 

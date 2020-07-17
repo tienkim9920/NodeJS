@@ -1,6 +1,6 @@
 
 
-body{
+/* body{
     background-image: url(../img/lap.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -158,7 +158,7 @@ input:focus{
 input:placeholder-shown + label{
     opacity: 0;
     transform: translateY(1rem);
-}
+} */
 
 .Error label{
     color: rgb(209, 59, 59);

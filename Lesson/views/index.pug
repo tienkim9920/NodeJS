@@ -1,15 +1,17 @@
-doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1.0')
-  link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css',
-   integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
-  title User
+extends ./layouts/common.pug
 
-.container
-    h1.text-center(style="padding: 3rem 0") Xin Chào Admin
+block content
+  div.d-flex(style="padding: 3rem 0; justify-content: center") 
+    h1 Xin Chào
+    span &nbsp;
+    if users
+      h1= users.fullname
 
-    .SanPham.text-center
-        a(href="/BuyProduct", class="btn btn-success") Mua Bán Sản Phẩm
-        span &nbsp;
-        a(href="/users", class="btn btn-primary") Quản Lý Sản Phẩm
+  .SanPham.text-center
+    div(id="checkError")
+    .d-flex.justify-content-center
+      a(href="/BuyProduct", class="btn btn-success") Mua Bán Sản Phẩm
+      span &nbsp;
+      form(action="/users", method="GET")
+        button(type="submit", class="btn btn-primary", id="clickUsers", data-id=users._id) Quản Lý Người Dùng
+  

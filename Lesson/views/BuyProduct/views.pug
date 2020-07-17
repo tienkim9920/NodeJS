@@ -1,19 +1,15 @@
-doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1.0')
-  link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css',
-   integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
-  title User
 
-.container
+extends ../layouts/common.pug
+
+block content
     h1(style="padding-top: 3rem") Chi Tiết Sản Phẩm
     .row(style="padding-top: 3rem")
         .col
 
-            img(src="/" + users.avatar, style="width: 500px; height: 500px")
+            img(src=products.img, style="width: 500px; height: 500px")
         .col
             .chiTietSanPham(style="padding-top: 5rem")
-                h1= users.name
-                h2= users.price
-                a(href="#" class="btn btn-danger") Tiến Hành Đặt Hàng
+                h1= products.name
+                h2= products.price + ".000đ"
+                form(action="/BuyProduct/add/cart/" + products._id, method="POST")
+                    button(type="submit", class="btn btn-danger") Tiến Hành Đặt Hàng

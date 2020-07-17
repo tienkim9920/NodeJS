@@ -1,12 +1,12 @@
-var db = require('../db');
+var User = require('../models/users.model')
 
-module.exports.CheckMiddle = (req, res, next) => {
+module.exports.CheckMiddle = async (req, res, next) => {
     if (!req.signedCookies.userID){
         res.redirect('/auth/login');
         return;
     }
 
-    var user = db.get('users').find(({id}) => id === req.signedCookies.userID).value();
+    var user = await User.findOne(({_id: req.signedCookies.userID}))
 
     if (!user){
         res.redirect('/auth/login');

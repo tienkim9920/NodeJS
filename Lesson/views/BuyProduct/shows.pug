@@ -1,0 +1,22 @@
+extends ../layouts/common.pug
+
+block content
+    h1(style="padding: 3rem 0") Danh Sách Sản Phẩm Đã Mua
+
+    table(class="table")
+        tr
+            th Sản Phẩm
+            th Tên Sản Phẩm 
+            th Giá
+            th Số Lượng
+
+        each listCart in listCarts
+            tr
+                td
+                    img(src=listCart.img, style="width: 200px")
+                td(style="font-size: 1.8rem; padding-top: 5rem; color: green")=listCart.name
+                td(style="font-size: 1.6rem; padding-top: 5rem; color: gray")=listCart.price + ".000đ"
+                td(style="font-size: 1.6rem; padding-top: 5rem; color: gray")=listCart.count
+                td(style="padding-top: 5rem;")
+                    form(action="/BuyProduct/delete/" + listCart._id, method="post")
+                        button(type="submit", class="btn btn-danger") X

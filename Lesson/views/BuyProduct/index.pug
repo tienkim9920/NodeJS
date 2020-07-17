@@ -1,19 +1,21 @@
-doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1.0')
-  link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css',
-   integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
-  title Product
 
-.container
+extends ../layouts/common.pug
+
+block content
     h1.text-center(style="padding: 3rem 0") Danh Sách Sản Phẩm
+
+    if users
+        form(action="/BuyProduct/search/" + users._id, method="GET", style="display: flex; justify-content: flex-end")
+            input(type="text", name="q", class="form-control w-25")
+            span &nbsp;
+            button(type="submit", class="btn btn-primary") Tìm Kiếm
+
     .row
-        each user in users
+        each product in products
             .col-lg-3
                 .card(style='width: 17rem; margin: 1rem 1rem')
-                    img.card-img-top.text-center(src='/' + user.avatar, style="height: 270px")
+                    img.card-img-top.text-center(src=product.img, style="height: 270px")
                     .card-body.text-center
-                        h5.card-title= user.name
-                        p.card-text=user.price
-                        a.btn.btn-success(href='/BuyProduct/' + user._id) Đặt Hàng
+                        h5.card-title(style="color: green")= product.name
+                        p.card-text(style="font-size: 1.2rem; color: gray")=product.price + ".000đ"
+                        a.btn.btn-success(href='/BuyProduct/' + product._id) Đặt Hàng

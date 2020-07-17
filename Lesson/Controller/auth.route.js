@@ -1,41 +1,48 @@
 var md5 = require('md5');
 
-var db = require('../db');
+var User = require('../models/users.model')
 
 module.exports.login = (req, res) => {
     res.render('auth/login')
 }
 
-module.exports.postLogin = (req, res) => {
+module.exports.postLogin = async (req, res) => {
 
     var emailLogin = req.body.email;
-    var passwordLogin = req.body.password;
+    var passwordLogin = md5(req.body.password);
 
-    var safePassword = md5(passwordLogin);
-
-    console.log(safePassword);
-    console.log(emailLogin);
-
-    var emailCheck = db.get('users').find(({email}) => email === emailLogin).value();
+    var emailCheck = await User.findOne({email: emailLogin})
 
     if (!emailCheck){
         res.render('auth/login', {
-            errorEmail: "Email is wrong!",
+            errors: "Email is wrong!",
             values: req.body
         });
         return;
     }
     
-    if (emailCheck.password !== safePassword) {
+    if (emailCheck.password !== passwordLogin) {
         res.render('auth/login', {
-            errorPassword: "Password is wrong",
+            errors: "Password is wrong",
             values: req.body
         });
         return;
     }
     
-    res.cookie('userID', emailCheck.id, {
+    res.cookie('userID', emailCheck._id, {
         signed: true
     });
-    res.redirect('/users');
+
+    res.redirect('/');
+}
+
+module.exports.logout = (req, res) => {
+
+    req.session = null
+
+    res.cookie('userID', {
+        signed: false
+    });
+
+    res.redirect('/auth/login')
 }

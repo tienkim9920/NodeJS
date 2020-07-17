@@ -1,12 +1,7 @@
-doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1.0')
-  link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css',
-   integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
-  title User
+extends ../layouts/common.pug
 
-.container(style="height: 50rem;")
+block content
+    
     h1(style="padding-top: 3rem") Quản Lý Sản Phẩm
 
     form(action="/users/search", method="GET", class="d-flex" ,style="padding-bottom: 3rem; justify-content: flex-end;", enctype="multipart/form-data")
@@ -16,25 +11,22 @@ head
 
     table(class="table")
         tr
-            th Avatar
-            th Name
+            th Full Name
             th Phone
             th Email
-            th View
+            th Edit
 
         each user in users
             tr
-                td
-                    img(src="/" + user.avatar, style="width: 30px")
-                td=user.name
-                td=user.price
+                //- td
+                //-     img(src="/" + user.avatar, style="width: 30px")
+                td=user.fullname
+                td=user.phone
                 td=user.email
                 td(class="d-flex")
-                    a(href='/users/' + user._id, class="btn btn-primary") View
+                    a(href='/users/edit/' + user._id, class="btn btn-success") Update
                     span &nbsp;
                     form(action="/users/" + user._id, method="POST")
                         button(class="btn btn-danger") Delete
-                    span &nbsp;
-                    a(href='/users/edit/' + user._id, class="btn btn-success") Update
 
     a(href="users/create", class="btn btn-primary") Thêm Mới

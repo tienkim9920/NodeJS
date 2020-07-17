@@ -2,11 +2,12 @@ var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema(
     { 
-        name: String,
-        price: String,
+        fullname: String,
+        phone: String,
         email: String,
         password: String,
-        avatar: String
+        status: Boolean,
+        cart: Array
     }
 );
 
