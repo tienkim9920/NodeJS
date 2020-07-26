@@ -12,6 +12,8 @@ var products = require('./routes/products.route');
 var addCart = require('./routes/cart.route');
 var buyProduct = require('./routes/buy.route');
 
+var userAPI = require('./api/routes/users.routeApi')
+
 var User = require('./models/users.model')
 
 const app = express();
@@ -39,6 +41,8 @@ app.get('/', userMiddleware.CheckMiddle, async (req, res) => {
     })
     
 });
+
+app.use('/userAPI', userAPI)
 
 
 app.use('/auth', usersAuth);

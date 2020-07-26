@@ -20,12 +20,47 @@ module.exports.index = async (req, res) => {
 
     console.log(soLuong)
 
-    Product.find().then((product) => {
-        res.render('BuyProduct', {
-            products: product,
-            users: user,
-            countProduct: soLuong,
-        })
+    // Tạo Nút Phân Trang //
+
+    var page = parseInt(req.query.page) || 1
+
+    var numberProducts = 4
+
+    var start = (page - 1) * numberProducts
+    var end = page * numberProducts
+
+    var product = await Product.find()
+
+    var numberClick = ((product.length) / numberProducts)
+
+    var nextClick = page + 1
+
+    var prevClick = page - 1
+
+    console.log(nextClick)
+    console.log(prevClick)
+
+    if (page > numberClick){
+        nextClick = 1
+    }
+
+    var arrCount = []
+
+    for (var i = 0; i < numberClick; i++){
+        arrCount.push(Number(i + 1))
+    }
+
+    // Tạo Nút Phân Trang //
+
+    console.log(arrCount)
+
+    res.render('BuyProduct', {
+        products: product.slice(start, end),
+        users: user,
+        countProduct: soLuong,
+        clickPages: arrCount,
+        nextClick: nextClick,
+        prevClick: prevClick
     })
 
 }

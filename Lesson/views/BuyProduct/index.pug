@@ -19,3 +19,18 @@ block content
                         h5.card-title(style="color: green")= product.name
                         p.card-text(style="font-size: 1.2rem; color: gray")=product.price + ".000đ"
                         a.btn.btn-success(href='/BuyProduct/' + product._id) Đặt Hàng
+
+    .row
+        .wapperPhanTrang(class="w-100", style="display: flex; justify-content: center")
+            nav(aria-label='Page navigation example')
+                ul.pagination
+                    if prevClick
+                        li.page-item
+                        a.page-link(href='BuyProduct?page=' + prevClick) Previous
+                    each clickPage in clickPages
+                        li.page-item
+                        a.page-link.pageClick(href='BuyProduct?page=' + clickPage)= clickPage
+                    if nextClick
+                        li.page-item
+                        a.page-link(href='BuyProduct?page=' + nextClick) Next
+        
